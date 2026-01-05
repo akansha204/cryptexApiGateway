@@ -1,3 +1,21 @@
+server:
+  port: 8080   # Gateway port
+
 spring:
   application:
     name: cryptex-api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/auth/**
+
+            - id: secret-service
+              uri: http://localhost:3000
+              predicates:
+                - Path=/api/projects/**
