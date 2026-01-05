@@ -59,6 +59,7 @@ Client
 - Framework: Spring Boot
 - Security: JWT
 - Architecture: Microservices
+- Dependencies - Reactive Gateway, Spring Security, OAuth2 Resource Server, SpringBoot Actuator (optional)
 
 ---
 
