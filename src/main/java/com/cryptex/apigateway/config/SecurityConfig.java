@@ -13,8 +13,10 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
-                        .anyExchange().permitAll()
+                        .pathMatchers("/api/auth/**").permitAll()
+                        .anyExchange().authenticated()
                 )
+                .oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt)
                 .build();
     }
 }
